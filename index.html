@@ -1,71 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="김민서의 자율주행·로보틱스 소프트웨어 포트폴리오">
   <title>김민서 | Autonomous Driving & Robotics</title>
-  <meta
-    name="description"
-    content="자율주행, 로보틱스 및 임베디드 AI 프로젝트 포트폴리오"
-  >
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #0f172a;
-      background: #f8fafc;
-    }
-
-    main {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 100px 24px;
-    }
-
-    .label {
-      color: #2563eb;
-      font-weight: 700;
-    }
-
-    h1 {
-      margin: 16px 0;
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 1.1;
-    }
-
-    p {
-      max-width: 720px;
-      color: #475569;
-      font-size: 20px;
-      line-height: 1.7;
-    }
-
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      color: #fff;
-      background: #2563eb;
-      padding: 14px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-    }
+    :root{--ink:#07152f;--muted:#60708c;--line:#dfe8f5;--blue:#165dff;--cyan:#33c7ff;--bg:#f6f9fd;--card:#fff;--radius:22px;--shadow:0 20px 55px rgba(20,60,120,.10)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Pretendard,"Noto Sans KR",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}a{color:inherit;text-decoration:none}button{font:inherit}
+    .nav{position:fixed;inset:0 0 auto;z-index:20;background:rgba(246,249,253,.78);backdrop-filter:blur(16px);border-bottom:1px solid rgba(223,232,245,.7)}
+    .nav-inner{max-width:1180px;height:72px;margin:auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:-.04em}.brand b{color:var(--blue)}
+    .nav-links{display:flex;gap:26px;font-size:14px;font-weight:700}.nav-links a{color:#51617c;transition:.2s}.nav-links a:hover{color:var(--blue)}
+    .hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;padding:120px 24px 72px;background:radial-gradient(circle at 76% 35%,rgba(51,199,255,.18),transparent 26%),linear-gradient(135deg,#f9fbff 0%,#eef5ff 100%)}
+    .hero-grid{position:absolute;inset:0;opacity:.32;background-image:linear-gradient(rgba(22,93,255,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(22,93,255,.10) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to right,transparent 0%,#000 38%,#000 100%)}
+    .route{position:absolute;right:2%;top:9%;width:min(52vw,760px);height:min(76vh,700px);opacity:.9}.route path{fill:none;stroke:url(#routeGradient);stroke-width:4;stroke-linecap:round;stroke-dasharray:14 14;animation:flow 9s linear infinite}.route circle{fill:#fff;stroke:var(--blue);stroke-width:4}.pulse{transform-origin:center;animation:pulse 2.2s ease-out infinite}
+    @keyframes flow{to{stroke-dashoffset:-280}}@keyframes pulse{0%{opacity:1;transform:scale(.7)}80%,100%{opacity:0;transform:scale(2.3)}}
+    .hero-inner{position:relative;z-index:2;width:min(1180px,100%);display:grid;grid-template-columns:1.15fr .85fr;align-items:center}.eyebrow{color:var(--blue);font-size:14px;font-weight:900;letter-spacing:.14em}.hero h1{font-size:clamp(48px,7vw,88px);line-height:1.07;letter-spacing:-.065em;margin:20px 0 24px}.hero h1 span{display:block;color:var(--blue)}.lead{max-width:650px;font-size:clamp(18px,2vw,23px);color:#4c5e7b}.typing{display:inline-block;border-right:3px solid var(--blue);white-space:nowrap;overflow:hidden;vertical-align:bottom;animation:cursor .8s step-end infinite}@keyframes cursor{50%{border-color:transparent}}
+    .actions{display:flex;gap:12px;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:12px;font-weight:850;border:1px solid var(--line);background:#fff;transition:.25s}.btn:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .stats{align-self:end;justify-self:end;display:grid;gap:12px;width:min(360px,100%)}.stat{background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);box-shadow:var(--shadow);padding:18px 20px;border-radius:18px;backdrop-filter:blur(10px)}.stat strong{font-size:28px}.stat small{display:block;color:var(--muted)}
+    section{padding:110px 24px}.wrap{max-width:1180px;margin:auto}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:40px}.section-kicker{color:var(--blue);font-weight:900;font-size:13px;letter-spacing:.14em}.section-title{font-size:clamp(34px,5vw,56px);line-height:1.12;letter-spacing:-.055em;margin:10px 0}.section-copy{max-width:560px;color:var(--muted)}
+    .about-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:30px}.photo{min-height:480px;border-radius:var(--radius);border:1px dashed #a9b9d1;background:linear-gradient(135deg,#e8eff9,#f9fbff);display:grid;place-items:center;text-align:center;color:#7485a0;overflow:hidden}.photo span{padding:24px}.about-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:38px;box-shadow:var(--shadow)}.about-card h3{font-size:30px;margin:0 0 16px}.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}.chip{padding:8px 12px;border-radius:999px;background:#edf4ff;color:#174da8;font-size:13px;font-weight:800}
+    .projects{background:#07152f;color:#fff}.projects .section-copy{color:#aebbd0}.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.project{min-height:360px;border-radius:22px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.11);background:linear-gradient(145deg,#123567,#091b3a);cursor:pointer}.project::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(51,199,255,.30),transparent 32%);transition:.35s}.project:hover::before{transform:scale(1.15)}.project-content{position:absolute;inset:auto 0 0;padding:26px;background:linear-gradient(transparent,rgba(3,12,30,.96) 35%)}.project-no{color:#64d5ff;font-size:12px;font-weight:900;letter-spacing:.12em}.project h3{font-size:24px;line-height:1.25;margin:8px 0}.project p{color:#b8c5d8;font-size:14px;margin:0}.project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}.project-tags span{font-size:11px;padding:5px 8px;border:1px solid rgba(255,255,255,.2);border-radius:999px}
+    .case{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}.visual{aspect-ratio:16/10;border:1px dashed #9db1cf;border-radius:var(--radius);background:linear-gradient(135deg,#e6eef9,#fdfefe);display:grid;place-items:center;text-align:center;color:#70809a;padding:28px}.case h3{font-size:clamp(30px,4vw,48px);line-height:1.15;letter-spacing:-.04em;margin:10px 0 18px}.role{color:var(--blue);font-weight:850}.case-list{padding:0;list-style:none}.case-list li{padding:11px 0 11px 27px;border-bottom:1px solid var(--line);position:relative}.case-list li::before{content:"→";position:absolute;left:0;color:var(--blue);font-weight:900}
+    .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.skill{background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px}.skill b{display:block;color:var(--blue);margin-bottom:10px}.skill p{margin:0;color:var(--muted);font-size:14px}
+    .awards{background:#edf4ff}.award-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}.award{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;justify-content:space-between;gap:18px}.award span{color:var(--muted);white-space:nowrap}
+    .contact{padding-bottom:70px}.contact-box{border-radius:30px;padding:60px;background:linear-gradient(135deg,#0a1b3a,#124cb7);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px}.contact-box h2{font-size:clamp(34px,5vw,58px);line-height:1.1;margin:0}.contact-box p{color:#c8d8f3}.contact-box .btn{white-space:nowrap}
+    footer{padding:24px;text-align:center;color:#7c8ca4;font-size:13px}.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}
+    @media(max-width:900px){.nav-links{display:none}.hero-inner,.about-grid,.case{grid-template-columns:1fr}.stats{display:none}.route{opacity:.38;width:100vw;right:-25%}.project-grid{grid-template-columns:1fr 1fr}.skills-grid{grid-template-columns:1fr 1fr}.award-list{grid-template-columns:1fr}.contact-box{display:block}.contact-box .btn{margin-top:20px}.photo{min-height:380px}}
+    @media(max-width:620px){section{padding:80px 20px}.hero{padding-inline:20px}.hero h1{font-size:52px}.project-grid,.skills-grid{grid-template-columns:1fr}.section-head{display:block}.actions{flex-direction:column;align-items:stretch}.contact-box{padding:36px 26px}.award{display:block}.award span{display:block;margin-top:5px}.typing{white-space:normal}}
   </style>
 </head>
-
 <body>
+  <header class="nav"><div class="nav-inner"><a class="brand" href="#home">MINSEO<b>.</b></a><nav class="nav-links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#case">Case Study</a><a href="#skills">Skills</a><a href="#awards">Awards</a><a href="#contact">Contact</a></nav></div></header>
   <main>
-    <div class="label">AUTONOMOUS DRIVING · ROBOTICS</div>
-    <h1>안녕하세요.<br>김민서입니다.</h1>
-
-    <p>
-      전자및항공전자공학을 전공하며 자율주행 경로 계획,
-      장애물 인지·회피 및 임베디드 AI 시스템을 개발하고 있습니다.
-    </p>
-
-    <a href="https://github.com/minseo0814">
-      GitHub 보기
-    </a>
+    <section class="hero" id="home">
+      <div class="hero-grid"></div>
+      <svg class="route" viewBox="0 0 800 700" aria-hidden="true"><defs><linearGradient id="routeGradient"><stop stop-color="#165dff"/><stop offset="1" stop-color="#33c7ff"/></linearGradient></defs><path d="M55 590 C130 520 100 405 215 395 S310 510 405 430 S440 260 550 250 S640 160 750 75"/><circle cx="55" cy="590" r="9"/><circle cx="405" cy="430" r="9"/><circle cx="750" cy="75" r="9"/><circle class="pulse" cx="405" cy="430" r="18"/></svg>
+      <div class="hero-inner"><div><div class="eyebrow">AUTONOMOUS DRIVING · ROBOTICS</div><h1>안녕하세요.<span>김민서입니다.</span></h1><p class="lead">경로를 계획하고, 장애물을 인지하며, 시스템을 끝까지 연결하는 <strong class="typing" id="typing">자율주행 SW 엔지니어</strong>를 지향합니다.</p><div class="actions"><a class="btn primary" href="#projects">프로젝트 보기</a><a class="btn" href="https://github.com/minseo0814" target="_blank" rel="noreferrer">GitHub</a></div></div><div class="stats"><div class="stat"><strong>AI·Mission 팀장</strong><small>KAUVOY Autonomous Driving</small></div><div class="stat"><strong>6 Projects</strong><small>Mobility · AI · Embedded</small></div><div class="stat"><strong>End-to-End</strong><small>Planning → Perception → Control</small></div></div></div>
+    </section>
+    <section id="about"><div class="wrap"><div class="section-head reveal"><div><div class="section-kicker">01 ABOUT</div><h2 class="section-title">기술을 연결해<br>움직이는 결과를 만듭니다.</h2></div><p class="section-copy">전자및항공전자공학을 전공하며 자율주행 경로 계획, 장애물 인지·회피, 임베디드 AI 시스템을 개발하고 있습니다.</p></div><div class="about-grid"><div class="photo reveal"><span><strong>프로필 사진 영역</strong><br>나중에 컴퓨터에 있는 사진으로 교체</span></div><div class="about-card reveal"><h3>김민서</h3><p>한국항공대학교 전자및항공전자공학전공<br><strong>KAUVOY AI·Mission팀 팀장</strong></p><p>문제를 알고리즘 하나로만 보지 않고, 센서 입력부터 경로 생성·제어기 연동·주행 검증까지 전체 시스템 관점에서 해결합니다.</p><div class="chips"><span class="chip">Path Planning</span><span class="chip">Obstacle Avoidance</span><span class="chip">Robotics SW</span><span class="chip">Embedded AI</span><span class="chip">Computer Vision</span></div></div></div></div></section>
+    <section class="projects" id="projects"><div class="wrap"><div class="section-head reveal"><div><div class="section-kicker">02 PROJECTS</div><h2 class="section-title">Selected Projects</h2></div><p class="section-copy">현재는 대표 이미지 자리만 구성했습니다. 프로젝트 사진과 영상은 준비되는 순서대로 교체할 수 있습니다.</p></div><div class="project-grid">
+      <article class="project reveal"><div class="project-content"><div class="project-no">PROJECT 01</div><h3>KAUVOY 자율주행 시스템</h3><p>MORAI K-City 경로 계획·장애물 회피·미션 주행</p><div class="project-tags"><span>ROS</span><span>Dijkstra</span><span>MPPI</span></div></div></article>
+      <article class="project reveal"><div class="project-content"><div class="project-no">PROJECT 02</div><h3>Smart Mirror</h3><p>임베디드 환경의 적응형 얼굴 인식 파이프라인</p><div class="project-tags"><span>Raspberry Pi</span><span>ArcFace</span><span>OpenCV</span></div></div></article>
+      <article class="project reveal"><div class="project-content"><div class="project-no">PROJECT 03</div><h3>AI × Drone Challenge</h3><p>AI 기반 드론 경로 및 장애물 대응 프로젝트</p><div class="project-tags"><span>Drone</span><span>AI</span><span>GCS</span></div></div></article>
+      <article class="project reveal"><div class="project-content"><div class="project-no">PROJECT 04</div><h3>항공드론 캡스톤디자인</h3><p>항공전자 시스템 설계 및 하드웨어 통합</p><div class="project-tags"><span>Avionics</span><span>Hardware</span></div></div></article>
+      <article class="project reveal"><div class="project-content"><div class="project-no">PROJECT 05</div><h3>AIRBUS 101</h3><p>항공 모빌리티 문제 해결 및 설계 제안</p><div class="project-tags"><span>Aviation</span><span>Design</span></div></div></article>
+      <article class="project reveal"><div class="project-content"><div class="project-no">PROJECT 06</div><h3>GroundingDINO Prompt Sensitivity</h3><p>프롬프트 변화에 따른 객체 검출 민감도 분석</p><div class="project-tags"><span>GroundingDINO</span><span>Vision</span></div></div></article>
+    </div></div></section>
+    <section id="case"><div class="wrap"><div class="case"><div class="visual reveal"><span><strong>MORAI · RViz 영상 영역</strong><br>K-City 주행 또는 장애물 회피 영상 삽입</span></div><div class="reveal"><div class="section-kicker">FEATURED CASE STUDY</div><h3>KAUVOY<br>Autonomous Driving</h3><p class="role">AI·Mission팀 팀장</p><ul class="case-list"><li>MGeo·Dijkstra 기반 Global Path 생성 및 발행</li><li>LiDAR ROI 기반 주행 장애물 검출</li><li>MPC에 연계되는 MPPI 회피 경로 알고리즘 개발</li><li>GPS 음영구간 주행과 회피 기동 구현</li><li>Ubuntu 20.04 · ROS · MORAI · UDP · Python · C++</li></ul></div></div></div></section>
+    <section id="skills"><div class="wrap"><div class="section-head reveal"><div><div class="section-kicker">03 SKILLS</div><h2 class="section-title">Core Competencies</h2></div></div><div class="skills-grid"><div class="skill reveal"><b>Planning</b><p>MGeo · Dijkstra<br>Global Path</p></div><div class="skill reveal"><b>Perception</b><p>LiDAR ROI · OpenCV<br>Computer Vision</p></div><div class="skill reveal"><b>Avoidance & Control</b><p>MPPI · MPC<br>UDP Integration</p></div><div class="skill reveal"><b>Environment</b><p>Ubuntu · ROS · RViz<br>MORAI · Python · C++</p></div></div></div></section>
+    <section class="awards" id="awards"><div class="wrap"><div class="section-head reveal"><div><div class="section-kicker">04 CREDENTIALS</div><h2 class="section-title">Awards & Certificates</h2></div></div><div class="award-list"><div class="award reveal"><strong>AI × DRONE 마케팅 챌린지 우수상</strong><span>2026</span></div><div class="award reveal"><strong>항공드론 캡스톤디자인 발표회 우수상</strong><span>2026</span></div><div class="award reveal"><strong>AIRBUS 101 공모전 5th Place</strong><span>2026</span></div><div class="award reveal"><strong>ADsP · 6 Sigma GB · 항공무선통신사</strong><span>Certificates</span></div></div></div></section>
+    <section class="contact" id="contact"><div class="wrap"><div class="contact-box reveal"><div><h2>함께 움직이는 기술을<br>만들고 싶습니다.</h2><p>프로젝트 상세 자료와 연락처는 순차적으로 업데이트할 예정입니다.</p></div><a class="btn" href="mailto:guykms814@naver.com">이메일 보내기</a></div></div></section>
   </main>
+  <footer>© 2026 Minseo Kim. Built for Autonomous Driving & Robotics.</footer>
+  <script>
+    const words=["자율주행 SW 엔지니어","로보틱스 개발자","시스템 문제 해결자"];let wi=0,ci=0,deleting=false;const typing=document.getElementById("typing");
+    function type(){const word=words[wi];typing.textContent=deleting?word.slice(0,--ci):word.slice(0,++ci);let delay=deleting?55:95;if(!deleting&&ci===word.length){delay=1300;deleting=true}else if(deleting&&ci===0){deleting=false;wi=(wi+1)%words.length;delay=300}setTimeout(type,delay)}type();
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+  </script>
 </body>
 </html>
